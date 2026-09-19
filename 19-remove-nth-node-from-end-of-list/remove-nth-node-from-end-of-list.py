@@ -9,35 +9,48 @@
 
 
 
+# class Solution:
+#     def removeNthFromEnd(self, head: ListNode | None, n: int) -> ListNode | None:
+
+#         if head is None:
+#             return None
+
+#         # Find length
+#         curr = head
+#         l = 0
+
+#         while curr != None:
+#             l += 1
+#             curr = curr.next
+
+#         # If removing the first node
+#         if n == l:
+#             return head.next
+
+#         # Go to node before the target
+#         curr = head
+
+#         for i in range(l - n - 1):
+#             curr = curr.next
+
+#         # Remove node
+#         curr.next = curr.next.next
+
+#         return head
+
 class Solution:
     def removeNthFromEnd(self, head: ListNode | None, n: int) -> ListNode | None:
-
-        if head is None:
-            return None
-
-        # Find length
-        curr = head
-        l = 0
-
-        while curr != None:
-            l += 1
-            curr = curr.next
-
-        # If removing the first node
-        if n == l:
-            return head.next
-
-        # Go to node before the target
-        curr = head
-
-        for i in range(l - n - 1):
-            curr = curr.next
-
-        # Remove node
-        curr.next = curr.next.next
-
+        p1 = head
+        p2 = head
+        for i in range(n):
+            p2 = p2.next
+        if p2 ==None:
+            head = head.next
+            return head
+        while p2.next != None:
+            p2 = p2.next
+            p1 = p1.next
+        p1.next = p1.next.next
         return head
-
-
         
          
